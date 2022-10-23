@@ -1,30 +1,6 @@
 <template>
-
-<Nav />
-
-<div class="container-fluid">
-  <div class="row">
-    <Menu />
-
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-     <router-view />
-    </main>
-  </div>
-</div>
-
-
+  <router-view />
 </template>
-
-<script>
-  import Nav from './components/Nav.vue';
-  import Menu from './components/Menu.vue';
-  import Dashboard from './pages/Dashboard.vue';
-  import Users from './pages/Users.vue'
-
-  export default {
-    components: {Nav, Menu, Dashboard, Users}
-  }
-</script>
 
 
 <style>
