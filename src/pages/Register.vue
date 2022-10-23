@@ -36,7 +36,7 @@
 
             const submit = async () => {
 
-                await axios.post('http://127.0.0.1:8000/api/register',
+                await axios.post('register',
                     {
                         first_name: firstName.value,
                         last_name: lastName.value,
