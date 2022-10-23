@@ -7,30 +7,7 @@
     <Menu />
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-     
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-              <th scope="col">Header</th>
-            </tr>
-          </thead>
-          <tbody>
-          
-            <tr>
-              <td>1,015</td>
-              <td>random</td>
-              <td>tabular</td>
-              <td>information</td>
-              <td>text</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+     <router-view />
     </main>
   </div>
 </div>
@@ -41,9 +18,11 @@
 <script>
   import Nav from './components/Nav.vue';
   import Menu from './components/Menu.vue';
+  import Dashboard from './pages/Dashboard.vue';
+  import Users from './pages/Users.vue'
 
   export default {
-    components: {Nav, Menu}
+    components: {Nav, Menu, Dashboard, Users}
   }
 </script>
 
