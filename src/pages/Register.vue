@@ -1,17 +1,17 @@
 <template>
     <main class="form-signin">
-        <form>
+        <form @submit.prevent="submit" >
            
             <h1 class="h3 mb-3 fw-normal">Please Register</h1>
-            <input type="text" class="form-control" placeholder="First Name" required>
+            <input v-model="firstName" type="text" class="form-control" placeholder="First Name" required>
 
-            <input type="text" class="form-control" placeholder="Last Name" required>
+            <input v-model="lastName" type="text" class="form-control" placeholder="Last Name" required>
 
-            <input type="email" class="form-control" placeholder="name@example.com" required>
+            <input v-model="email" type="email" class="form-control" placeholder="name@example.com" required>
             
-            <input type="password" class="form-control" placeholder="Password" required>
+            <input v-model="password" type="password" class="form-control" placeholder="Password" required>
 
-            <input type="password" class="form-control" placeholder="Password Confirm" required>
+            <input v-model="passwordConfirm" type="password" class="form-control" placeholder="Password Confirm" required>
             
             <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
            
@@ -19,13 +19,46 @@
     </main>
 </template>
 
-<script>
+<script lang="ts">
     import {ref} from 'vue';
+    import axios from 'axios';
+    import { useRouter } from 'vue-router';
 
     export default {
         name: "Register",
+        setup(){
+            const firstName = ref('');
+            const lastName = ref('');
+            const email = ref('');
+            const password = ref('');
+            const passwordConfirm = ref('');
+            const router = useRouter();
 
-        
+            const submit = async () => {
+
+                await axios.post('http://127.0.0.1:8000/api/register',
+                    {
+                        first_name: firstName.value,
+                        last_name: lastName.value,
+                        email: email.value,
+                        password: password.value,
+                        password_confirm: passwordConfirm.value,
+
+                    }
+                 );
+                
+                await router.push('/login'); 
+            }
+
+            return {
+                firstName,
+                lastName,
+                email,
+                password,
+                passwordConfirm,
+                submit
+            }
+        }
     }
 </script>
 
